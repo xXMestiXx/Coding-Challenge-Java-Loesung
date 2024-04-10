@@ -120,6 +120,18 @@ public class LinkedList<E> implements ListInterface<E> {
         return clone;
     }
 
+    @Override
+    public String toString(){
+        String stringList = "String: (LinkedList: ";
+        Node<E> current = head;
+        while(current != null){
+            stringList = stringList + current.toString() + " " ;
+            current = current.next;
+        }
+        stringList = stringList + ")";
+        return stringList;
+    }
+
     public static void main(String[] args) {
         LinkedList<Integer> list = new LinkedList<>();
         list.add(5);
@@ -141,5 +153,6 @@ public class LinkedList<E> implements ListInterface<E> {
         list.printList();
         LinkedList<Integer> clone = list.clone();
         clone.printList();
+        System.out.println(clone.toString());        
     }
 }
