@@ -1,12 +1,33 @@
+/**
+ * LinkedList<E> is implementing an self made generic linked list.
+ * @author Philipp Mestenhauser
+ * @version 1.3
+ * @see Node , ListInterface
+ */
 public class LinkedList<E> implements ListInterface<E> {
+    
+    /**
+     * Is setting the head for the linked List
+     */
     private Node<E> head;
+    /**
+     * Is saving the length of the LinkedList<E>
+     */
     private int size;
 
+
+    /**
+     * Constructor for the class LinkedList<E>
+     */
     public LinkedList() {
         head = null;
         size = 0;
     }
 
+    /**
+     * Add's new node to LinkedList<E>
+     * @param element new node
+     */
     @Override
     public void add(E element) {
         Node<E> newNode = new Node<>(element);
@@ -22,6 +43,12 @@ public class LinkedList<E> implements ListInterface<E> {
         size++;
     }
 
+    /**
+     * Add's new node at chosen index to LinkedList<E>
+     * @param index position where new node is going to be added
+     * @param element new node
+     * @throws @exception IndexOutOfBoundsException if index is invalid
+     */
     @Override
     public void add(int index, E element) {
         if (index < 0 || index > size) {
@@ -44,6 +71,12 @@ public class LinkedList<E> implements ListInterface<E> {
         size++;
     }
 
+    /**
+     * Returns node at selected index from LinkedList<E>
+     * @param index position of node that is going to be returned
+     * @return node
+     * @throws @exception IndexOutOfBoundsException if index is invalid
+     */
     @Override
     public E get(int index) {
         if (index < 0 || index >= size) {
@@ -57,6 +90,12 @@ public class LinkedList<E> implements ListInterface<E> {
         return current.data;
     }
 
+    /**
+     * Checks if element is part of the LinkedList<E>
+     * @param element is compared to all nodes of the LinkedList<E>
+     * @return true = if element is part of the LinkedList<E>. 
+     *         false = if there is no such element in the LinkedList<E>
+     */
     @Override
     public boolean contains(E element) {
         Node<E> current = head;
@@ -69,11 +108,20 @@ public class LinkedList<E> implements ListInterface<E> {
         return false;
     }
 
+    /**
+     * Return the size of the LinkedList<E>
+     * @return size
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Removes node form LinkedList<E> at selected index
+     * @param index Index for node which is going to be removed
+     * @throws @exception IndexOutOfBoundsException if index is invalid
+     */
     @Override
     public void remove(int index) {
         if (index < 0 || index >= size) {
@@ -92,12 +140,18 @@ public class LinkedList<E> implements ListInterface<E> {
         size--;
     }
 
+    /**
+     * Deletes a whole LinkedList<E>
+     */
     @Override
     public void clear() {
         head = null;
         size = 0;
     }
 
+    /**
+     * Creates a visual output of a LinkedList<E> to the terminal
+     */
     @Override
     public void printList(){
         Node<E> current = this.head;
@@ -108,7 +162,10 @@ public class LinkedList<E> implements ListInterface<E> {
         }
         System.out.println();
     }
-
+    /**
+     * Creates a deep clone of a LinkedList<E>
+     * @return clone
+     */
     @Override
     public LinkedList<E> clone(){
         LinkedList<E> clone = new LinkedList<>();
@@ -120,6 +177,10 @@ public class LinkedList<E> implements ListInterface<E> {
         return clone;
     }
 
+    /**
+     * Return a LinkedList<E> as an String
+     * @return stringList
+     */
     @Override
     public String toString(){
         String stringList = "String: (LinkedList: ";
@@ -132,6 +193,11 @@ public class LinkedList<E> implements ListInterface<E> {
         return stringList;
     }
 
+
+    /**
+     * Main method
+     * @param args
+     */
     public static void main(String[] args) {
         LinkedList<Integer> list = new LinkedList<>();
         list.add(5);
